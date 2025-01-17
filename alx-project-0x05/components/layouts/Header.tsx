@@ -5,7 +5,7 @@ import { useCount } from "@/context/CountContext";
 
 const Header: React.FC = () => {
   const pathname = usePathname();
-  const { count } = useCount();
+  const { count, increment, decrement } = useCount();  // Destructure all the needed context values
 
   return (
     <header className="fixed w-full bg-white shadow-md">
@@ -22,7 +22,17 @@ const Header: React.FC = () => {
               <Button buttonLabel="Sign Up" buttonBackgroundColor="blue" />
             </>
           ) : (
-            <p className="font-semibold text-lg">Current count: {count}</p>
+            <div>
+              <p className="font-semibold text-lg">Current count: {count}</p>
+              <div className="flex gap-2">
+                <button onClick={increment} className="bg-green-500 px-2 py-1 rounded text-white">
+                  Increment
+                </button>
+                <button onClick={decrement} className="bg-red-500 px-2 py-1 rounded text-white">
+                  Decrement
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>
